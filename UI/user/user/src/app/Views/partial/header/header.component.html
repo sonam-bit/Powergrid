@@ -1,0 +1,96 @@
+<div class="header-container p-0 d-flex row align-items-center m-0">
+  <div class="headerLogoContainer col-lg-3">
+    <img
+      class="headerLogo"
+      src="../../../../assets/logo-removebg-preview.png"
+    />
+  </div>
+
+  <div class="col">
+    <div class="row d-flex align-item-center justify-content-left">
+      <div class="headerItemsContainer col">
+        <div class="headerLinks d-flex justify-content-around">
+          <span (click)="navigateTo('/home')" class="headerLinksItems"
+            >Home</span
+          >
+        </div>
+      </div>
+      <div class="headerItemsContainer col">
+        <div class="headerLinks d-flex justify-content-around">
+          <span (click)="navigateTo('/raiseTicket')" class="headerLinksItems"
+            >Raise Ticket</span
+          >
+        </div>
+      </div>
+      <div class="headerItemsContainer col">
+        <div class="headerLinks d-flex justify-content-around">
+          <span (click)="navigateTo('/historyTicket')" class="headerLinksItems">
+            Ticket History</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col align-items-center d-flex justify-content-end">
+    <div
+      class="greetingContainer align-items-center d-flex justify-content-around"
+    >
+      <span class="greeting p-2">{{ greeting }}</span>
+      <span class="userName p-2"> {{ userName }}</span>
+    </div>
+    <div
+      #dropdown
+      (click)="openProfile()"
+      class="profileContainer d-flex justify-content-end"
+    >
+      <img
+        class="profileImg p-2"
+        src="../../../../assets/avatar-removebg-preview.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+<div
+  #dropdown
+  appClickedOutside
+  *ngIf="showProfileSection"
+  class="container-fluid profileDropDownContainer p-0"
+>
+  <div class="row m-0">
+    <div class="profileHeader justify-content-center">Profile</div>
+    <div class="textContainer row p-0 m-0 align-items-center">
+      <div class="profileImgContainer col-4">
+        <img
+          class="profileLogo mx-1"
+          src="../../../../assets/avatar-removebg-preview.png"
+          alt=""
+        />
+      </div>
+      <div class="profileTextContainer col-8">
+        <div class="profileText">
+          <span class="profileTextValue">{{ userName }}</span>
+        </div>
+        <div class="profileText">
+          <span class="profileTextValue">{{ user_id }}</span>
+        </div>
+        <div class="profileText emailValueText">
+          <span class="profileTextValue">{{ email }}</span>
+        </div>
+        <div class="profileText">
+          <span class="profileTextValue">{{ contact }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="profileDropDownItemsContainer d-flex flex-column p-4">
+      <button
+        (click)="logOutUser()"
+        pButton
+        pRipple
+        type="button"
+        label="Logout"
+        class="p-button-danger"
+      ></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+
+<div class="center">
+<div class="container-fluid loginContainer">
+    <div class="row main-box">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col login-part">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-12 ">
+                            <div class="fs-2 fw-normal">Request Portal</div>
+                            <div class="mt-4 row">
+                                <span class="col-12 email-heading">User ID</span>
+                                <span class="col-12 mt-2">
+                                    <input [(ngModel)]="userid" type="text" pInputText
+                                        class="p-inputtext-sm shadow Inputlen" [style]="{width: '100%'}"
+                                        placeholder="10XXX" />
+                                </span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between">
+                                    <span>Password</span>    
+                                </div>
+                                <div class="mt-2 w-100">
+                                    <p-password [feedback]="false" class="shadow-lg" [style]="{ width: '100%' }"
+                                        [inputStyle]="{ width: '100%' }" [(ngModel)]="password" [toggleMask]="true">
+                                    </p-password>
+                                </div>
+                            </div>
+                            <div class="mt-4 ">
+                                <button class="loginBtn" (click)="loginUser()" pButton pRipple
+                                    [style]="{ width: '30%' }" type="button" label="Login"></button>
+                            </div>
+                            <div>
+                                <p-divider></p-divider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+</div>
+
+
+
+      

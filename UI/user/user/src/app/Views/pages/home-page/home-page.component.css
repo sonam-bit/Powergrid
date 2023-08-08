@@ -1,0 +1,12 @@
+a{
+   text-decoration: none;
+   Color: white;
+}
+.card{
+    border: none;
+    box-shadow: 1px 1px 10px 1px grey;
+}
+.faq{
+    height: 30vh;
+    overflow-y: scroll;
+}

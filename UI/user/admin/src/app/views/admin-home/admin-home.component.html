@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+<div class="card p-3">
+    <h1 class="d-flex justify-content-center">All Issues</h1>
+    <div class="filter row mb-3 mt-2">
+      <div class="title col d-flex align-items-center "><Label style="padding:2px">Title</Label><input type="text" class="form-control" id="title" [(ngModel)]="titleFilter" [ngModelOptions]="{standalone:true}"></div>
+      <div class="category col d-flex align-items-center">
+       <Label style="padding:0 3px">Category</Label>
+       <select class="form-control" id="category" required="true" [(ngModel)]="categoryFilter" [ngModelOptions]="{standalone:true}">
+         <option value="software">Software</option>
+         <option value="hardware">Hardware</option>
+         <option value="meeting-link">Meeting-Link</option>
+         <option value="eoffice">Eoffice</option>
+         <option value="other">Other</option>
+         <option value="all">All</option>
+       </select>
+      </div>
+      <div class="date col d-flex align-items-center">
+       <Label style="padding:0 3px">Date</Label>
+       <select class="form-control" id="category" required="true" [(ngModel)]="dateFilter" [ngModelOptions]="{standalone:true}">
+         <option value="latest">Latest</option>
+         <option value="oldest">Oldest</option>
+       </select>
+      </div>  
+      <div class="status col d-flex align-items-center">
+       <Label style="padding:0 3px">Status</Label>
+       <select class="form-control" id="category" required="true" [(ngModel)]="statusFilter" [ngModelOptions]="{standalone:true}">
+         <option value=1>Resolved</option>
+         <option value=0>Pending</option>
+         <option value=3>All</option>
+       </select>
+      </div>  
+     <button class="col-lg-1 btn btn-primary" (click)="filter()">Filter</button>
+      </div>
+
+      <p-table responsiveLayout="stack" styleClass="p-datatable-gridlines"  [paginator]="true"
+      [rows]="10" [showCurrentPageReport]="true" [value]="issues" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="header" let-columns >
+      <tr>
+        <th>Issue Id</th>
+        <th>User Id</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Location</th>
+        <th>Urgency</th>
+        <th>IP/Host</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Attachement</th>
+        <th>Date/Time</th>
+        <th>Current Status</th>
+        <th>Update Status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-issues let-columns="columns">
+      <tr>
+        <td><span class="p-column-title">Issue Id</span>{{ issues.issue_id }}</td>
+        <td><span class="p-column-title">User Id</span>{{ issues.user_id }}</td>
+        <td><span class="p-column-title">Category</span>{{ issues.category }}</td>
+        <td>
+          <span class="p-column-title">Sub Category</span
+          >{{ issues.subcategory }}
+        </td>
+        <td>
+          <span class="p-column-title">Location</span
+          >{{
+            issues.location
+          }}
+        </td>
+        <td>
+          <span class="p-column-title">Urgency</span>{{ issues.urgency }}
+        </td>
+        <td>
+          <span class="p-column-title">IP/Host</span>{{ issues.iphost }}
+        </td>
+        <td>
+          <span class="p-column-title">Title</span>{{ issues.title }}
+        </td>
+        <td>
+          <span class="p-column-title">Description</span
+          >
+          <div class="card flex justify-content-center">
+            <p-button (click)="showDialog(issues.description)" icon="pi pi-external-link" label="Read"></p-button>
+            <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+                <ng-template pTemplate="header">
+                    <span class="text-xl font-bold">Full Description</span>
+                </ng-template>
+                  {{attributeData.description}}
+                  <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="visible = false" label="Ok" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-dialog>
+        </div>
+       </td>
+       <td>
+        <span class="p-column-title" >Attachement</span> 
+        <div class="card flex justify-content-center">
+         <p-button (click)="renderImg(issues)" icon="pi pi-eye" label="View"></p-button>
+         <p-dialog header="Header" [(visible)]="visibleImage" [style]="{ width: '70vw' }">
+             <ng-template pTemplate="header">
+                 <span class="text-xl font-bold">Attached Image</span>
+             </ng-template>
+               <img [src]=imgSrc [style]="{width: '60vw'}"/>
+         </p-dialog>
+     </div>
+      </td>
+        <td>
+         <span class="p-column-title">Date/Time</span> {{issues.date}}
+        </td>
+        <td>
+          <span class="p-column-title">Current Status</span> <span [ngClass] ="{'red':issues.status==0,'green':issues.status==1}">{{ issues.status =='1'?"Resolved":(issues.status=='0'?"Pending":"Not Available" )}}</span> 
+        </td>
+        <td>
+          <span class="p-column-title">Update Status</span> 
+          <div class="d-flex">
+          <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-check"
+          (click)="updateStatus(1,issues.issue_id)"
+          class="p-button-rounded p-button-success p-button-outlined"
+          style="margin-right:3px;"
+        ></button>
+        <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-trash"
+        (click)="updateStatus(2,issues.issue_id)"
+        class="p-button-rounded p-button-danger p-button-outlined"
+      ></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+ </div>
+
+ <app-footer></app-footer>
+ 

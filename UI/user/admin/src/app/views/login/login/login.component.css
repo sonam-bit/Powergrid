@@ -1,0 +1,20 @@
+
+.login-part{
+    margin: 10px;
+}
+
+.loginContainer{
+   width:max-content;
+   box-shadow: 1px 1px 5px #aaaaaa;
+}
+.center{
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+
+

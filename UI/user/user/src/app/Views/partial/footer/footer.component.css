@@ -1,0 +1,62 @@
+.deskFooter
+{   
+    background-color: #172337 !important;
+    padding: 1rem;
+    width: 100%;
+}
+
+ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ul li {
+    position: relative;
+    list-style: none;
+  }
+
+  .upperFooter {
+    padding: 0 !important;
+  }
+
+  .footerListItem {
+    height: 50px;
+    color: #fff;
+    display: inline-flex;
+  }
+
+  .footerAddress {
+    color: #fff;
+    font-size: 10px;
+  }
+  .footerConnect {
+    color: #fff;
+  }
+  .addressHeader{
+    margin: 0 !important;
+  }
+  .addressLogo{
+    margin: 0 !important;
+    font-size: 15px !important;
+  }
+  .connectHeader{
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  .iconContainer{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 10px;
+  }
+  
+  nav ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(249, 245, 245);
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.5s;
+  }
